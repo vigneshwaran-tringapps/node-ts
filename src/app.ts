@@ -19,7 +19,6 @@ var corsOptions:CorsOptions = {
 }
 
 //setting view engine and cors policy to express instance
-app.set('view engine', 'ejs');
 app.use(cors(corsOptions))
 // adding api routes to express
 app.use('/api/rates',require('./routes/currency'))
