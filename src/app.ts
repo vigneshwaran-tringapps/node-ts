@@ -4,10 +4,10 @@ require('dotenv').config();
 
 // express app instance creation
 const app:Application=express();
-const port = process.env.PORT||5000;
+const port = process.env.PORT||8000;
 
-//callback function for Cross origin policy for specific domain
-var whitelist = ['http://localhost:3000']
+// callback function for Cross origin policy for specific domain
+var whitelist = ['http://localhost:3000','http://localhost:5000']
 var corsOptions:CorsOptions = {
   origin: function (origin:any, callback:any) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
@@ -21,7 +21,7 @@ var corsOptions:CorsOptions = {
 //setting view engine and cors policy to express instance
 app.use(cors(corsOptions))
 // adding api routes to express
-app.use('/api/rates',require('./routes/currency'))
+app.use('/api/rates',require('./routes/exchange'))
 
 //sending error responce for unkonwn endpoint
 app.use('/**', (req,res)=>{
