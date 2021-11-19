@@ -3,7 +3,7 @@ import cors, { CorsOptions } from 'cors';
 require('dotenv').config();
 
 // express app instance creation
-const app:Application=express();
+const app1:Application=express();
 const port = process.env.PORT||5000;
 
 //callback function for Cross origin policy for specific domain
@@ -19,16 +19,16 @@ var corsOptions:CorsOptions = {
 }
 
 //setting view engine and cors policy to express instance
-app.use(cors(corsOptions))
+app1.use(cors(corsOptions))
 // adding api routes to express
-app.use('/api/rates',require('./routes/currency'))
+app1.use('/api/rates',require('./routes/currency'))
 
 //sending error responce for unkonwn endpoint
-app.use('/**', (req,res)=>{
+app1.use('/**', (req,res)=>{
     res.status(404).send(" This endpoint your searching for is not avail...")
 })
 
 //server listening on port 5000
-app.listen(port,()=>{
+app1.listen(port,()=>{
     console.log(`Server running at port ${port}`)
 });
